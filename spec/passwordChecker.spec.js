@@ -3,35 +3,35 @@ let passwordIsValid = mySpecTester.passwordIsValid;
 let passwordIsOk = mySpecTester.passwordIsOk;
 
 describe('passwordIsValid', function() {
-    it("should be true if the password exist", function() {
+    it("should be false if the password don't exist", function() {
 
 
-        expect(passwordIsValid("Ephraim@23")).toBe(true);
+        expect(()=>{passwordIsValid("")}).toThrow(new Error("Your password should exist"));
     })
-    it("should be true if the password length is 8 or more ", function() {
+    it("should be false if the password length is 8 or less", function() {
 
 
-        expect(passwordIsValid("Ephraim2@")).toBe(true);
+        expect(()=>{passwordIsValid("Ethr@1")}).toThrow(new Error("Your password need to have more that 8 characters"));
     })
-    it("should be true if the password has uppercase", function() {
+    it("should be false if the password doesn't have uppercase", function() {
 
 
-        expect(passwordIsValid("Ephr@im213")).toBe(true);
+        expect(()=>{passwordIsValid("ephr@im213")}).toThrow(new Error("Your password need to have atleast 1 uppercase"));
     })
-    it("should be true if the password has a lowercase", function() {
+    it("should be false if the password doesn't have lowercase", function() {
 
 
-        expect(passwordIsValid("ePhraim@2")).toBe(true);
+        expect(()=>{passwordIsValid("EPHRAIM@2")}).toThrow(new Error("Your password need to have atleast 1 lowercase"));
     })
-    it("should be true if the password has a number", function() {
+    it("should be false if the password doesn't have a number", function() {
 
 
-        expect(passwordIsValid("2Ephraim@")).toBe(true);
+        expect(()=>{passwordIsValid("EphraimMam@")}).toThrow(new Error("Your password need to have atleast 1 number"));
     })
-    it("should be true if the password has character", function() {
+    it("should be false if the password doesn't have a special character", function() {
 
 
-        expect(passwordIsValid("@Ephraim45")).toBe(true);
+        expect(()=>{passwordIsValid("Ephraim45")}).toThrow(new Error("Your password need to have atleast 1 special character"));
     })
 })
 
@@ -39,6 +39,6 @@ describe('passwordIsOk', function() {
     it("should be true if the password meet 3 or more conditions", function() {
 
 
-        expect(passwordIsOk("ephraiM42")).toBe(true);
+        expect(passwordIsOk("ephraimoh")).toBe(true);
     })
 })

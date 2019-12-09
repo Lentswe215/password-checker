@@ -2,17 +2,22 @@
 
 function passwordIsValid(pssword) {
 
-    let myRegex = new RegExp(/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?*&^%$"'@_-]).{8,}/);
+    let UpperCase= new RegExp(/[A-Z]/)
+    let lowerCase = new RegExp(/[a-z]/)
+    let numbers = new RegExp(/[0-9]/)
+    let specialCharacter = new RegExp(/[#?*&^%$"'@_-]/)
+    let lengthOfPassword = new RegExp(/[A-Za-z0-9]{8,}/);
 
-    try {
-        if (pssword == "") throw "Enter your password"
-        if (myRegex.test(pssword) == false) throw "Your password need to have atleast 1 uppercase, lowercase, digit and special character";
-    } catch (err) {
-        return err;
-    }
-    return true;
+  
+        if (pssword == "") throw new Error("Your password should exist")
+        if (UpperCase.test(pssword) == false) throw new Error("Your password need to have atleast 1 uppercase");
+        if (lowerCase.test(pssword) == false) throw new Error("Your password need to have atleast 1 lowercase");
+        if (numbers.test(pssword) == false) throw new Error("Your password need to have atleast 1 number");
+        if (specialCharacter.test(pssword) == false) throw new Error("Your password need to have atleast 1 special character");
+        if (lengthOfPassword.test(pssword) == false) throw new Error("Your password need to have more that 8 characters");
+   return true
 }
-
+// console.log(passwordIsValid("fEdxnnnn@21"))
 function passwordIsOk(pssword2) {
 
     let lowercase = /^[a-z]/g;
@@ -32,6 +37,7 @@ function passwordIsOk(pssword2) {
 
     return result;
 }
+
 module.exports = {
     passwordIsValid, passwordIsOk
 }
