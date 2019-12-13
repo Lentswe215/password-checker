@@ -1,6 +1,5 @@
-let mySpecTester = require('../passwordChecker');
+let mySpecTester = require('../src/password_checker');
 let passwordIsValid = mySpecTester.passwordIsValid;
-let passwordIsOk = mySpecTester.passwordIsOk;
 
 describe('passwordIsValid', function() {
     it("should be false if the password don't exist", function() {
@@ -35,10 +34,3 @@ describe('passwordIsValid', function() {
     })
 })
 
-describe('passwordIsOk', function() {
-    it("should be true if the password meet 3 or more conditions", function() {
-
-
-        expect(passwordIsOk("ephraimoh")).toBe(true);
-    })
-})

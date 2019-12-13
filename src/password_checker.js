@@ -17,7 +17,7 @@ function passwordIsValid(pssword) {
         if (lengthOfPassword.test(pssword) == false) throw new Error("Your password need to have more that 8 characters");
    return true
 }
-// console.log(passwordIsValid("fEdxnnnn@21"))
+
 function passwordIsOk(pssword2) {
 
     let lowercase = /^[a-z]/g;
